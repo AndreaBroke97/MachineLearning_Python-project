@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Valutazione Richiesta di Mutuo</title>
+</head>
+<body>
+    <h1>Richiesta Mutuo</h1>
+    <p>Compila il form con i dati del richiedente e premi "Valuta richiesta".</p>
+
+    {% if errore %}
+        <p style="color: red;"><strong>Errore:</strong> {{ errore }}</p>
+    {% endif %}
+
+    <form action="/predict" method="POST">
+
+        <label>Genere</label>
+        <select name="Gender">
+            <option value="Male">Maschio</option>
+            <option value="Female">Femmina</option>
+        </select><br><br>
+
+        <label>Stato civile</label>
+        <select name="Married">
+            <option value="Yes">Sposato/a</option>
+            <option value="No">Non sposato/a</option>
+        </select><br><br>
+
+        <label>Istruzione</label>
+        <select name="Education">
+            <option value="Graduate">Laureato/a</option>
+            <option value="Not Graduate">Non laureato/a</option>
+        </select><br><br>
+
+        <label>Lavoratore autonomo</label>
+        <select name="Self_Employed">
+            <option value="Yes">Sì</option>
+            <option value="No">No</option>
+        </select><br><br>
+
+        <label>Area di residenza</label>
+        <select name="Property_Area">
+            <option value="Urban">Urbana</option>
+            <option value="Semiurban">Semiurbana</option>
+            <option value="Rural">Rurale</option>
+        </select><br><br>
+
+        <label>Persone a carico</label>
+        <input type="number" name="Dependents" value="0"><br><br>
+
+        <label>Reddito del richiedente</label>
+        <input type="number" name="ApplicantIncome" value="0"><br><br>
+
+        <label>Reddito del co-richiedente</label>
+        <input type="number" name="CoapplicantIncome" value="0"><br><br>
+
+        <label>Importo del mutuo</label>
+        <input type="number" name="LoanAmount" value="0"><br><br>
+
+        <label>Durata del mutuo (in mesi)</label>
+        <input type="number" name="Loan_Amount_Term" value="360"><br><br>
+
+        <label>Storico creditizio</label>
+        <select name="Credit_History">
+            <option value="1">Buono (1)</option>
+            <option value="0">Negativo (0)</option>
+        </select><br><br>
+
+        <button type="submit">Valuta richiesta</button>
+    </form>
+</body>
+</html>
